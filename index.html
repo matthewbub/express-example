@@ -4,6 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Express example</title>
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;    
+      width: 100%;  
+    }
+
+    #root-GET,
+    #root-POST {
+      display: flex;
+      flex-direction: column;
+      margin: .25em;
+    }
+
+  </style>
 </head>
 <body>
   
@@ -17,7 +42,6 @@
 
   <script>    
     // GET our express server from our static content
-
     const fetchMyExpressServer = () => {      
       fetch('/api/hello-world')
         .then(res => res.json())
@@ -33,15 +57,14 @@
     getButton.onclick = () => fetchMyExpressServer();
       
     document.getElementById("root-GET").appendChild(getButton)
-
   </script>
 
-  <script>
 
+  <script>
     const postToMyExpressServer = () => {      
+      // OPTIONS is the second param passed to our fetch for the POST req.
       const OPTIONS = {
-        method: 'POST',
-        // headers are optional at this point
+        method: 'POST',        
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -60,10 +83,10 @@
     }
 
     const input = document.createElement("input");    
+    input.placeholder = "Type something!"
     const submit = document.createElement("button");      
     submit.innerHTML = "POST to '/api/user-input'"
     submit.onclick = () => postToMyExpressServer();
-
 
     document.getElementById("root-POST").appendChild(input)
     document.getElementById("root-POST").appendChild(submit)
