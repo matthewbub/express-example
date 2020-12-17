@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express example</title>
+</head>
+<body>
+  
+  <div id="root-GET"></div>
+  
+  <noscript>See the 
+    <a href="https://github.com/hi-matbub/express-example">Docs</a> 
+    for more info.
+  </noscript>
+
+  <script>    
+
+    // GET our express server
+    const fetchMyExpressServer = () => {      
+      fetch('/api')
+        .then(res => res.json())
+        .then(res => {
+          const span = document.createElement('span');
+          span.innerHTML = res
+          document.getElementById("root-GET").appendChild(span)      
+        })
+    }
+
+    const getButton = document.createElement('button');
+    getButton.innerHTML = `GET \'/api/hello-world\'`
+    getButton.onclick = () => fetchMyExpressServer();
+      
+    document.getElementById("root-GET").appendChild(getButton)
+
+  </script>
+
+</body>
+</html>
