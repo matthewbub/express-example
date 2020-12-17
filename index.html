@@ -42,54 +42,53 @@
 
   <script>    
     // GET our express server from our static content
-    const fetchMyExpressServer = () => {      
+    const fetchMyExpressServer = () => {
       fetch('/api/hello-world')
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           const span = document.createElement('span');
-          span.innerHTML = res
-          document.getElementById("root-GET").appendChild(span)      
-        })
-    }
+          span.innerHTML = res;
+          document.getElementById('root-GET').appendChild(span);
+        });
+    };
 
     const getButton = document.createElement('button');
-    getButton.innerHTML = `GET \'/api/hello-world\'`
+    getButton.innerHTML = `GET \'/api/hello-world\'`;
     getButton.onclick = () => fetchMyExpressServer();
-      
-    document.getElementById("root-GET").appendChild(getButton)
+
+    document.getElementById('root-GET').appendChild(getButton);
   </script>
 
-
   <script>
-    const postToMyExpressServer = () => {      
+    const postToMyExpressServer = () => {
       // OPTIONS is the second param passed to our fetch for the POST req.
       const OPTIONS = {
-        method: 'POST',        
+        method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ data: input.value })
-      }
+        body: JSON.stringify({ data: input.value }),
+      };
 
       fetch('/api/user-input', OPTIONS)
-        .then(res => res.json())
-        .then(res => {          
-          const span = document.createElement("span");                              
+        .then((res) => res.json())
+        .then((res) => {
+          const span = document.createElement('span');
           span.innerHTML = res.data;
-          
-          document.getElementById("root-POST").appendChild(span)
-        })        
-    }
 
-    const input = document.createElement("input");    
-    input.placeholder = "Type something!"
-    const submit = document.createElement("button");      
-    submit.innerHTML = "POST to '/api/user-input'"
+          document.getElementById('root-POST').appendChild(span);
+        });
+    };
+
+    const input = document.createElement('input');
+    input.placeholder = 'Type something!';
+    const submit = document.createElement('button');
+    submit.innerHTML = "POST to '/api/user-input'";
     submit.onclick = () => postToMyExpressServer();
 
-    document.getElementById("root-POST").appendChild(input)
-    document.getElementById("root-POST").appendChild(submit)
+    document.getElementById('root-POST').appendChild(input);
+    document.getElementById('root-POST').appendChild(submit);
   </script>
 
 </body>
