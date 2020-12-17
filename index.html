@@ -8,6 +8,7 @@
 <body>
   
   <div id="root-GET"></div>
+  <div id="root-POST"></div>
   
   <noscript>See the 
     <a href="https://github.com/hi-matbub/express-example">Docs</a> 
@@ -15,8 +16,8 @@
   </noscript>
 
   <script>    
+    // GET our express server from our static content
 
-    // GET our express server
     const fetchMyExpressServer = () => {      
       fetch('/api/hello-world')
         .then(res => res.json())
@@ -33,6 +34,39 @@
       
     document.getElementById("root-GET").appendChild(getButton)
 
+  </script>
+
+  <script>
+
+    const postToMyExpressServer = () => {      
+      const OPTIONS = {
+        method: 'POST',
+        // headers are optional at this point
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: input.value })
+      }
+
+      fetch('/api/user-input', OPTIONS)
+        .then(res => res.json())
+        .then(res => {          
+          const span = document.createElement("span");                              
+          span.innerHTML = res.data;
+          
+          document.getElementById("root-POST").appendChild(span)
+        })        
+    }
+
+    const input = document.createElement("input");    
+    const submit = document.createElement("button");      
+    submit.innerHTML = "POST to '/api/user-input'"
+    submit.onclick = () => postToMyExpressServer();
+
+
+    document.getElementById("root-POST").appendChild(input)
+    document.getElementById("root-POST").appendChild(submit)
   </script>
 
 </body>
