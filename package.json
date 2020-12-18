@@ -3,12 +3,13 @@
   "main": "index.js",
   "node": "10.17.0",
   "scripts": {
-    "start": "node index",
+    "start": "node ./index.js",
     "start:dev": "nodemon index",
     "prettier": "prettier --config .prettierrc --write \"**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.6"
   },

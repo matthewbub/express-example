@@ -21,4 +21,4 @@ app.get('/api/hello-world', (req, res) => res.json('Hello from express!'));
 app.post('/api/user-input', (req, res) => res.json(req.body));
 
 // .listen() is what runs our server
-app.listen(3000, () => console.log('Listening on localhost:3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Listening on localhost:3000'));
